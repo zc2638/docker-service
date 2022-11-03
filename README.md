@@ -22,6 +22,7 @@ Docker compose quick start of common services
 - minio
 - mosquitto
 - mysql
+- postgres
 - rabbitmq
 - redis
 - registry
