@@ -1,0 +1,12 @@
+networks:
+  default:
+    name: ds-network
+
+services:
+  registry:
+    image: registry:2.8.1
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ~/.docker-service/registry/data:/var/lib/registry

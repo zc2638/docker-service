@@ -1,0 +1,14 @@
+networks:
+  default:
+    name: ds-network
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.9.24-management
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest

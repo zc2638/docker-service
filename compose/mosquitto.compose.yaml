@@ -1,0 +1,13 @@
+networks:
+  default:
+    name: ds-network
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.15
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ~/.docker-service/mosquitto/data:/mosquitto

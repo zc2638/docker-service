@@ -1,0 +1,25 @@
+networks:
+  default:
+    name: ds-network
+
+minio:
+  image: quay.io/minio/minio:RELEASE.2022-10-29T06-21-33Z
+  restart: unless-stopped
+  ports:
+    - "9000:9000"
+    - "9001:9001"
+  volumes:
+    - ~/.docker-service/minio/data:/data
+  command:
+    - "server"
+    - "/data"
+    - "--console-address"
+    - ":9001"
+  environment:
+    MINIO_ACCESS_KEY: "root"
+    MINIO_SECRET_KEY: "root1234"
+  healthcheck:
+    test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+    interval: 30s
+    timeout: 20s
+    retries: 3

@@ -1,0 +1,22 @@
+# docker run --privileged=true -d --name zookeeper -p 2181:2181
+networks:
+  default:
+    name: ds-network
+
+services:
+  zookeeper:
+    image: zookeeper:3.8.0
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    volumes:
+      - ~/.docker-service/zookeeper/data:/data
+      - ~/.docker-service/zookeeper/conf:/conf
+      - ~/.docker-service/zookeeper/logs:/datalog
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888
+#      ZOO_SERVERS: server.1=0.0.0.0:2888:3888 server.2=192.168.1.107:2888:3888 server.3=192.168.1.108:2888:3888
