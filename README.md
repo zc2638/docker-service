@@ -29,3 +29,8 @@ Docker compose quick start of common services
 - zookeeper
 
 More will be added in the future.
+
+## Problem
+
+If it fails to start, please check whether the default generated mount configuration is correct. If you are not sure,
+please delete the mount directory `~/.docker-service/{service}`.
